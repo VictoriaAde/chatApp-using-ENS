@@ -17,10 +17,10 @@ contract ChatApp {
         Message[] receivedMessages;
     }
 
-    IENSRegistry public ensRegistry;
-    mapping(address => string) public ensNames;
-    // mapping(string => Message[]) public messages;
-    mapping(string => UserMessages) public userMessages;
+    IENSRegistry internal ensRegistry;
+    mapping(address => string) internal ensNames;
+    // mapping(string => Message[]) internal messages;
+    mapping(string => UserMessages) internal userMessages;
 
     event MessageSent(
         string sender,
@@ -80,15 +80,24 @@ contract ChatApp {
         );
     }
 
-    function getSentMessages(
-        string memory ensName
-    ) external view returns (Message[] memory) {
-        return userMessages[ensName].sentMessages;
+    function getSentMessages() external view returns (Message[] memory) {
+        string memory senderENSName = ensNames[msg.sender];
+        require(
+            bytes(senderENSName).length > 0,
+            "Sender ENS name not registered"
+        );
+        return userMessages[senderENSName].sentMessages;
     }
 
-    function getReceivedMessages(
-        string memory ensName
-    ) external view returns (Message[] memory) {
-        return userMessages[ensName].receivedMessages;
+    function getReceivedMessages() external view returns (Message[] memory) {
+        string memory recipientENSName = ensNames[msg.sender];
+        require(
+            bytes(recipientENSName).length > 0,
+            "Recipient ENS name not registered"
+        );
+        return userMessages[recipientENSName].receivedMessages;
     }
 }
+
+// ENSRegistry 0x81cd3ee7dF9Cf837BC9e577ff0AaB63829741638
+// ChapApp 0x4C48217c3007EdD90c8Aa884660467F3AF4fA753

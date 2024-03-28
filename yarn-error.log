@@ -1,0 +1,27 @@
+Arguments: 
+  /home/victoria/.nvm/versions/node/v20.4.0/bin/node /usr/local/bin/yarn add react-toastify
+
+PATH: 
+  /home/victoria/.nvm/versions/node/v20.4.0/bin:/home/victoria/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/victoria/.foundry/bin:/home/victoria/.foundry/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.4.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:118:26)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
